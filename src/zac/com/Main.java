@@ -21,9 +21,9 @@ public class Main {
         int[][] myArr = knapsack(weight, value, capa);
         printArr(myArr);
 
-//        Stack<Integer> s = recover(myArr, weight, value, capa);
+        Stack<Integer> s = recover(myArr, weight, value, capa);
 
-//        while (!s.isEmpty()) System.out.print("item " + s.pop() + ", ");
+        while (!s.isEmpty()) System.out.print("item " + s.pop() + ", ");
         System.out.println(" are selected.");
     }
 
@@ -91,17 +91,16 @@ public class Main {
         int max = theArr[i][j];
 
 //        while (theArr[i][j] != 0) {
-        while (max > 0 || j > 0) {
+        while (max > 0 || i > 0) {
 
-            if (theArr[i][j] != theArr[i-1][j]) {
-                s.push(i+1);
-                j -= theWeight[i];
-                max -= theValue[i];
-                i--;
-            }
+            if (theArr[i][j] == theArr[i-1][j]) i--;
 
             else {
+                s.push(i+1);
+//                max -= theValue[i];
+                j -= theWeight[i];
                 i--;
+                max = theArr[i][j];
             }
         }
         return s;
