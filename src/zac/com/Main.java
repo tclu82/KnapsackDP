@@ -14,16 +14,20 @@ public class Main {
 //        int[] value = {1, 4, 5, 7};
 //        int capa = 7;
 
-        int[] weight = {1, 4, 2, 6, 7, 4, 1, 3};
-        int[] value = {4, 1, 5, 6, 7, 2, 4, 1};
-        int capa = 13;
+//        int[] weight = {1, 4, 2, 6, 7, 4, 1, 3};
+//        int[] value = {4, 1, 5, 6, 7, 2, 4, 1};
+//        int capa = 13;
+
+        int[] weight = {2, 3, 4, 5};
+        int[] value = {3, 7, 2, 9};
+        int capa = 5;
 
         int[][] myArr = knapsack(weight, value, capa);
         printArr(myArr);
 
-        Stack<Integer> s = recover(myArr, weight, value, capa);
+        Stack<Integer> s = solution(myArr, weight, value, capa);
 
-        while (!s.isEmpty()) System.out.print("item " + s.pop() + ", ");
+        while (!s.isEmpty()) System.out.print("item " + s.pop() + " ");
         System.out.println(" are selected.");
     }
 
@@ -78,13 +82,13 @@ public class Main {
     }
 
     /**
-     * Recover selection
+     * Solution method
      *
      * @param theArr
      * @param theCapa
      * @return Stack<Integer>
      */
-    private static Stack<Integer> recover(int[][] theArr, int[] theWeight, int[] theValue, int theCapa) {
+    private static Stack<Integer> solution(int[][] theArr, int[] theWeight, int[] theValue, int theCapa) {
         Stack<Integer> s = new Stack<>();
         int i, j = theCapa;
         i = theArr.length - 1;
