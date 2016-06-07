@@ -90,17 +90,24 @@ public class Main {
         i = theArr.length - 1;
         int max = theArr[i][j];
 
-//        while (theArr[i][j] != 0) {
-        while (max > 0 || i > 0) {
+        while (max > 0) {
 
-            if (theArr[i][j] == theArr[i-1][j]) i--;
+            if (i > 0) {
 
-            else {
-                s.push(i+1);
-//                max -= theValue[i];
-                j -= theWeight[i];
-                i--;
-                max = theArr[i][j];
+                if (theArr[i][j] == theArr[i - 1][j]) i--;
+
+                else {
+                    s.push(i + 1);
+                    j -= theWeight[i];
+                    i--;
+                    max = theArr[i][j];
+                }
+            /** i = 0 */
+            } else {
+
+                if (max > 0) s.push(i + 1);
+
+                max = 0;
             }
         }
         return s;
