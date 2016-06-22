@@ -13,13 +13,13 @@ public class Main {
 //        int[] value = {1, 4, 5, 7};
 //        int capa = 7;
 
-//        int[] weight = {1, 4, 2, 6, 7, 4, 1, 3};
-//        int[] value = {4, 1, 5, 6, 7, 2, 4, 1};
-//        int capa = 13;
+        int[] weight = {1, 4, 2, 6, 7, 4, 1, 3};
+        int[] value = {4, 1, 5, 6, 7, 2, 4, 1};
+        int capa = 13;
 
-        int[] weight = {2, 3, 4, 5};
-        int[] value = {3, 7, 2, 9};
-        int capa = 5;
+//        int[] weight = {2, 3, 4, 5};
+//        int[] value = {3, 7, 2, 9};
+//        int capa = 5;
 
         int[][] myArr = knapsack(weight, value, capa);
         printArr(myArr);
@@ -46,9 +46,9 @@ public class Main {
 
         for (j = 0; j <= theCapacity; j++) {
 
-            if (j >= theWeight[0]) dp[0][j] = theValue[0];
+            if (j < theWeight[0]) dp[0][j] = 0;
 
-            else dp[0][j] = 0;
+            else dp[0][j] = theValue[0];
         }
 
         for (i = 1; i < theValue.length; i++) {
