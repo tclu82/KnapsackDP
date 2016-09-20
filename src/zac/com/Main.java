@@ -9,13 +9,13 @@ public class Main {
 //        int[] value = {3, 2, 4, 4};
 //        int capa = 6;
 
-//        int[] weight = {1, 3, 4, 5};
-//        int[] value = {1, 4, 5, 7};
-//        int capa = 7;
+        int[] weight = {1, 3, 4, 5};
+        int[] value = {1, 4, 5, 7};
+        int capa = 7;
 
-        int[] weight = {1, 4, 2, 6, 7, 4, 1, 3};
-        int[] value = {4, 1, 5, 6, 7, 2, 4, 1};
-        int capa = 13;
+//        int[] weight = {1, 4, 2, 6, 7, 4, 1, 3};
+//        int[] value = {4, 1, 5, 6, 7, 2, 4, 1};
+//        int capa = 13;
 
 //        int[] weight = {2, 3, 4, 5};
 //        int[] value = {3, 7, 2, 9};
@@ -24,8 +24,9 @@ public class Main {
         int[][] myArr = knapsack(weight, value, capa);
         printArr(myArr);
 
-        Stack<Integer> s = solution(myArr, weight, value, capa);
+        Stack<Integer> s = solution(myArr, weight, capa);
 
+        System.out.println();
         while (!s.isEmpty()) System.out.print("item " + s.pop() + " ");
         System.out.println(" are selected.");
     }
@@ -44,13 +45,14 @@ public class Main {
         /** 2D array for DP */
         int[][] dp = new int[theValue.length][theCapacity + 1];
 
+        /** First row */
         for (j = 0; j <= theCapacity; j++) {
 
             if (j < theWeight[0]) dp[0][j] = 0;
 
             else dp[0][j] = theValue[0];
         }
-
+        
         for (i = 1; i < theValue.length; i++) {
 
             for (j = 0; j <= theCapacity; j++) {
@@ -87,11 +89,9 @@ public class Main {
      * @param theCapa
      * @return Stack<Integer>
      */
-    private static Stack<Integer> solution(int[][] theArr, int[] theWeight, int[] theValue, int theCapa) {
+    private static Stack<Integer> solution(int[][] theArr, int[] theWeight, int theCapa) {
         Stack<Integer> s = new Stack<>();
-        int i, j = theCapa;
-        i = theArr.length - 1;
-        int max = theArr[i][j];
+        int i = theArr.length - 1, j = theCapa, max = theArr[i][j];
 
         while (max > 0) {
 
